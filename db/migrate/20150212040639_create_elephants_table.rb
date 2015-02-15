@@ -7,7 +7,7 @@ class CreateElephantsTable < ActiveRecord::Migration
       t.text      :passengers
       t.timestamps
     end
-    add_index :elephants, :name
+    add_index :elephants, :name, unique: true
     add_index :elephants, :rider
     add_index :elephants, :passengers
   end
