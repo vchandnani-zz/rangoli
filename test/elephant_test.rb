@@ -24,4 +24,11 @@ class ElephantTest < Minitest::Test
     assert_equal "cannot be blank.", e.errors.messages[:name][0]
   end
 
+  def test_create_with_duplicate_name
+    e1 = Elephant.create!(:name => "rangoli", :rider => "vinny", :passengers => "bobby")
+    e2 = Elephant.create(:name => "rangoli", :rider => "vinny", :passengers => "bobby")
+    assert_equal nil, e2.id
+    assert_equal "is not unique.", e2.errors.messages[:name][0]
+  end
+
 end
