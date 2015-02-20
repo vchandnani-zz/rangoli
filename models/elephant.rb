@@ -11,4 +11,10 @@ class Elephant < ActiveRecord::Base
     false
   end
 
+	def update_attrs params
+		self.rider = params["rider"]
+		self.passengers = params["passengers"]
+		self.save
+	end
+
 end

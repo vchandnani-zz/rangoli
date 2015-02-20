@@ -31,6 +31,20 @@ get '/elephants' do
 	return results.to_json
 end
 
+put '/elephant' do
+	content_type :json
+	params = JSON.parse(request.body.read)
+	name = params["name"]
+	results = {}
+	e = Elephant.where("name = '#{name}'").first
+	if e.nil?
+		halt 403, {error: {elephant: ["not found."]}}.to_json
+	else
+		e.update_attrs params
+	end
+  return results.to_json
+end
+
 delete '/elephant/:name' do |name|
 	content_type :json
 	results = {}

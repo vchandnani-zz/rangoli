@@ -52,6 +52,31 @@ class AppTest < Minitest::Test
 		assert_equal "bobby2", results[1]["passengers"]
 	end
 
+	def test_update_elephant_by_name
+		expected_results = {}
+		e1 = { :name => "rangoli", :rider => "vinny", :passengers => "bobby" }
+		post '/elephant', e1.to_json
+		e2 = { :name => "rangoli", :rider => "vinny2", :passengers => "bobby2" }
+		put '/elephant', e2.to_json
+		assert_equal 200, last_response.status
+		results = JSON.parse(last_response.body)
+		get '/elephants'
+		results = JSON.parse(last_response.body)
+		assert_equal 1, results.size
+		assert_equal "vinny2", results[0]["rider"]
+		assert_equal "bobby2", results[0]["passengers"]
+	end
+
+	def test_update_elephant_by_invalid_name
+		e1 = { :name => "rangoli", :rider => "vinny", :passengers => "bobby" }
+		post '/elephant', e1.to_json
+		e2 = { :name => "rangoli2", :rider => "vinny2", :passengers => "bobby2" }
+		put '/elephant', e2.to_json
+		assert_equal 403, last_response.status
+		results = JSON.parse(last_response.body)
+		assert_equal "not found.", results["error"]["elephant"][0]
+	end
+
 	def test_delete_elephant_by_name
 		expected_results = {}
 		e1 = { :name => "rangoli", :rider => "vinny", :passengers => "bobby" }
