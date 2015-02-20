@@ -30,3 +30,22 @@ get '/elephants' do
 	end
 	return results.to_json
 end
+
+delete '/elephant/:name' do |name|
+	content_type :json
+	results = {}
+	e = Elephant.where("name = '#{name}'").first
+	if e.nil?
+		halt 403, {error: {elephant: ["not found."]}}.to_json
+	else
+		e_id = e.id
+		e.destroy
+    count = Elephant.where(id:e_id).count
+		if count != 0
+			halt 400, {error: {elephant: ["could not be deleted."]}}.to_json
+		else
+			results = {}
+		end
+	end
+	return results.to_json
+end
