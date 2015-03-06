@@ -3,7 +3,7 @@ require 'sinatra/activerecord'
 require './models/elephant'
 
 get '/' do
-  "Hello World!"
+  redirect '/index.html'
 end
 
 post '/elephant' do
