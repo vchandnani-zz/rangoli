@@ -6,4 +6,10 @@ app.controller('MyCtrl', function($scope, $http) {
     $scope.elephants = data;
   });
 
+  $scope.destroy = function(elephant_name) {
+    if (confirm("Are you sure?")) {
+      $http.delete('/elephant/' + elephant_name);
+    }
+  };
+
 });

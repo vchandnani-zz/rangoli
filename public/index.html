@@ -17,6 +17,7 @@
           <th>Name</th>
           <th>Rider</th>
           <th>Passengers</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +25,9 @@
           <td>{{elephant.name}}</td>
           <td>{{elephant.rider}}</td>
           <td>{{elephant.passengers}}</td>
+          <td>
+            <a ng-click="destroy(elephant.name)" class="btn btn-danger btn-mini">Delete</a>
+          </td>
         </tr>
       </tbody>
     </table>
