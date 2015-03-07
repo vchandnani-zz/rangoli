@@ -1,0 +1,28 @@
+<h3> Rangoli's Elephants </h3>
+
+<a href="#/new" class="btn btn-primary">Add</a>
+
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Rider</th>
+      <th>Passengers</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="elephant in elephants">
+      <td>{{elephant.name}}</td>
+      <td>{{elephant.rider}}</td>
+      <td>{{elephant.passengers}}</td>
+      <td>
+        <a href="#/edit/{{$index}}" class="btn btn-primary">Edit</a>
+        <a ng-click="destroy(elephant.name)" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+
+</table>

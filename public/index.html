@@ -1,37 +1,15 @@
-<!DOCTYPE html>
-<html ng-app="myApp">
+<!DOCTYPE HTML>
+<html lang="en">
 
   <head>
     <link type="text/css" rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
-    <script src="js/app.js"></script>
   </head>
 
-	<body ng-controller="MyCtrl">
-
-    <h3> Elephants </h3>
-
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Rider</th>
-          <th>Passengers</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="elephant in elephants">
-          <td>{{elephant.name}}</td>
-          <td>{{elephant.rider}}</td>
-          <td>{{elephant.passengers}}</td>
-          <td>
-            <a ng-click="destroy(elephant.name)" class="btn btn-danger btn-mini">Delete</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
+  <body ng-app="app" ng-controller='AppCtrl'>
+    <ng-view></ng-view>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular-resource.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
   </body>
 
 </html>
