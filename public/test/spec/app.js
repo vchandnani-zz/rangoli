@@ -1,9 +1,26 @@
 'use strict';
 
-describe('my first test suite', function() {
+describe('testing CRUD services for elephants', function() {
 
-  it('should know 2 + 2 is 4', function() {
-    expect(2 + 2).toEqual(4);
+  var ctrl, scope, httpMock;
+
+  beforeEach(inject(function($controller, $rootScope, $httpBackend) {
+    httpMock = $httpBackend;
+    scope = $rootScope.$new();
+    httpMock.when('GET', '/elephants')
+      .respond({name: 'rangoli'});
+    ctrl = $controller;
+    ctrl(AppCtrl, {
+      $scope: scope
+    });
+	}));
+
+  it('should get the list of elephants and assign it to scope', function() {
+    httpMock.expectGET('/elephants');
+    httpMock.flush();
+    expect(scope.elephants).toEqual({
+      name: 'rangoli'
+    });
   });
 
 });

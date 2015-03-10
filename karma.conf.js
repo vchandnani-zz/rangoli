@@ -17,6 +17,7 @@ module.exports = function(config) {
     files: [
       'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.js',
       'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular-mocks.js',
+      'public/js/app.js',
       'public/test/spec/app.js'
     ],
 
