@@ -16,7 +16,7 @@ function AppCtrl($scope, $http, $window) {
       $http.delete('/elephant/' + elephant_name);
       $window.location.href = "/";
     }
-  };
+  }
 }
 
 function NewCtrl($scope, $http, $window) {
