@@ -6,7 +6,7 @@ get '/' do
   redirect '/index'
 end
 
-post '/elephant' do
+post '/elephants' do
   content_type :json
   params = JSON.parse(request.body.read)
   results = {}
@@ -31,12 +31,23 @@ get '/elephants' do
 	return results.to_json
 end
 
-put '/elephant' do
+get '/elephants/:id' do |id|
+  content_type :json
+	results = {}
+	e = Elephant.where("id = '#{id}'").first
+	if e
+		results = e
+	else
+		halt 403, {error: {elephant: ["not found."]}}.to_json
+	end
+	return results.to_json
+end
+
+put '/elephants/:id' do |id|
 	content_type :json
 	params = JSON.parse(request.body.read)
-	name = params["name"]
 	results = {}
-	e = Elephant.where("name = '#{name}'").first
+	e = Elephant.where("id = '#{id}'").first
 	if e.nil?
 		halt 403, {error: {elephant: ["not found."]}}.to_json
 	else
@@ -45,10 +56,10 @@ put '/elephant' do
   return results.to_json
 end
 
-delete '/elephant/:name' do |name|
+delete '/elephants/:id' do |id|
 	content_type :json
 	results = {}
-	e = Elephant.where("name = '#{name}'").first
+	e = Elephant.where("id = '#{id}'").first
 	if e.nil?
 		halt 403, {error: {elephant: ["not found."]}}.to_json
 	else
