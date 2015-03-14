@@ -1,6 +1,6 @@
 'use strict';
 
-describe('testing CRUD services for elephants', function() {
+describe('testing elephants read service', function() {
 
   var ctrl, scope, httpMock;
 
@@ -10,7 +10,7 @@ describe('testing CRUD services for elephants', function() {
     httpMock.when('GET', '/elephants')
       .respond({name: 'rangoli'});
     ctrl = $controller;
-    ctrl(AppCtrl, {
+    ctrl(elephantsAppController, {
       $scope: scope
     });
 	}));
