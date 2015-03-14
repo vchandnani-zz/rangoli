@@ -14,7 +14,7 @@ class AppTest < Minitest::Test
 
   def test_default_route
     get '/'
-    assert_equal "http://example.org/index", last_response.location
+    assert_equal "http://example.org/index.html", last_response.location
   end
 
   def test_create_elephants
