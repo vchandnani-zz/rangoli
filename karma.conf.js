@@ -15,8 +15,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.js',
-      'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular-mocks.js',
+      'public/bower_components/angular/angular.js',
+      'public/bower_components/angular-mocks/angular-mocks.js',
+      'public/bower_components/angular-route/angular-route.js',
       'public/js/app.js',
       'public/test/spec/app.js'
     ],

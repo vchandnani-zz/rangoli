@@ -1,4 +1,4 @@
-var app = angular.module('elephantsApp', []);
+var app = angular.module('elephantsApp', ['ngRoute']);
 
 app.config(function ($routeProvider, $locationProvider) {
   $routeProvider.

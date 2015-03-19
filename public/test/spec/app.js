@@ -1,26 +1,29 @@
 'use strict';
 
-describe('testing elephants read service', function() {
+describe('elephant factory read elephants', function() {
 
-  var ctrl, scope, httpMock;
+  var httpMock, factory;
 
-  beforeEach(inject(function($controller, $rootScope, $httpBackend) {
+  beforeEach(module('elephantsApp'));
+
+  beforeEach(inject(function($httpBackend, elephantFactory) {
     httpMock = $httpBackend;
-    scope = $rootScope.$new();
-    httpMock.when('GET', '/elephants')
-      .respond({name: 'rangoli'});
-    ctrl = $controller;
-    ctrl(elephantsAppController, {
-      $scope: scope
-    });
-	}));
+    factory = elephantFactory;
+  }));
 
-  it('should get the list of elephants and assign it to scope', function() {
-    httpMock.expectGET('/elephants');
-    httpMock.flush();
-    expect(scope.elephants).toEqual({
-      name: 'rangoli'
+  afterEach(function() {
+    httpMock.verifyNoOutstandingExpectation();
+    httpMock.verifyNoOutstandingRequest();
+  });
+
+  it('should get the list of elephants', function() {
+
+    var expectedData = { name: 'rangoli', rider: 'vinny', passengers: 'bobby' };
+    httpMock.expectGET('/elephants').respond(expectedData);
+    factory.getElephants().then( function (response) {
+      expect(response.data).toEqual(expectedData)
     });
+    httpMock.flush();
   });
 
 });
