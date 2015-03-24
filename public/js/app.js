@@ -47,11 +47,12 @@ function elephantsListController($scope, elephantFactory, $window) {
       });
   }
 
-  $scope.deleteElephant = function(elephant_id) {
+  $scope.deleteElephant = function(elephant) {
     if (confirm("Are you sure?")) {
-      elephantFactory.deleteElephant(elephant_id)
+      elephantFactory.deleteElephant(elephant.id)
         .success(function () {
-          $window.location.href = "/";
+          var index = $scope.elephants.indexOf(elephant);
+          $scope.elephants.splice(index, 1);
         })
         .error(function (error) {
           $scope.status = 'Unable to delete elephant: ' + error.message;
