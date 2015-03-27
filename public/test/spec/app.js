@@ -1,6 +1,6 @@
 'use strict';
 
-describe('elephant factory read elephants', function() {
+describe('elephant factory get-add-update-delete elephants', function() {
 
   var httpMock, factory;
 
