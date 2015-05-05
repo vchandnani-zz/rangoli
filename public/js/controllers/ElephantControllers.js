@@ -3,31 +3,24 @@ app.controller('elephantsListController', ['$scope', 'elephantFactory', '$window
 
   $scope.status;
   $scope.elephants;
-
+  $scope.elephants = elephantFactory.elephants;
   getElephants();
 
   function getElephants() {
-    elephantFactory.getElephants()
-      .success(function (elephants) {
-        $scope.elephants = elephants;
-      })
-      .error(function (error) {
-        $scope.status = 'Unable to load elephants: ' + error.message;
-      });
+		elephantFactory
+			.getElephants()
+			.then(function () {
+				$scope.elephants = elephantFactory.elephants;
+			});
   }
 
   $scope.deleteElephant = function(elephant) {
     if (confirm("Are you sure?")) {
-      elephantFactory.deleteElephant(elephant.id)
-        .success(function () {
-          var index = $scope.elephants.indexOf(elephant);
-          $scope.elephants.splice(index, 1);
-        })
-        .error(function (error) {
-          $scope.status = 'Unable to delete elephant: ' + error.message;
-        });
+      elephantFactory.deleteElephant(elephant.id);
+    };
+    var index = $scope.elephants.indexOf(elephant);
+    $scope.elephants.splice(index, 1);
     }
-  }
 
 }]);
 
