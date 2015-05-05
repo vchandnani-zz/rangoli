@@ -19,6 +19,8 @@ module.exports = function(config) {
       'public/bower_components/angular-mocks/angular-mocks.js',
       'public/bower_components/angular-route/angular-route.js',
       'public/js/app.js',
+      'public/js/controllers/ElephantControllers.js',
+      'public/js/services/ElephantFactory.js',
       'public/test/spec/app.js'
     ],
 
