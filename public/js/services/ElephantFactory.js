@@ -17,7 +17,13 @@ app.factory('elephantFactory', ['$http', function($http) {
 	};
 
   elephantFactory.addElephant = function (elephant) {
-    return $http.post(urlBase, elephant);
+    return $http.post(urlBase, elephant)
+      .success(function () {
+        console.log("elephantFactory addElephant: SUCCESS");
+      })
+      .error(function () {
+        console.log("elephantFactory addElephant: FAILURE");
+      });
   };
 
   elephantFactory.updateElephant = function (elephant) {

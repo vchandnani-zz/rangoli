@@ -30,11 +30,8 @@ app.controller('elephantsAddController', ['$scope', 'elephantFactory', '$window'
 		$scope.elephant = {name: "", rider: "", passengers: ""};
 		$scope.save = function() {
 			elephantFactory.addElephant($scope.elephant)
-				.success(function () {
+				.then(function () {
 					$window.location.href = "/";
-				}).
-				error(function(error) {
-					$scope.status = 'Unable to add elephant: ' + error.message;
 				});
 		}
 
