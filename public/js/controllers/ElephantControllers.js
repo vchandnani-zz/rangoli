@@ -2,7 +2,6 @@ app.controller('elephantsListController', ['$scope', 'elephantFactory', '$window
   function ($scope, elephantFactory, $window) {
 
   $scope.status;
-  $scope.elephants;
   $scope.elephants = elephantFactory.elephants;
   getElephants();
 

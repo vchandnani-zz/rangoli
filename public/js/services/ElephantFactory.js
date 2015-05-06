@@ -3,13 +3,13 @@ app.factory('elephantFactory', ['$http', function($http) {
   var urlBase = '/elephants';
   var elephantFactory = {};
 
-  elephantFactory.elephants = {};
+  elephantFactory.elephants = [];
 
   elephantFactory.getElephants = function () {
     return $http.get(urlBase)
       .success(function (data) {
-        console.log("elephantFactory getElephants: SUCCESS");
         elephantFactory.elephants = data;
+        console.log("elephantFactory getElephants: SUCCESS");
 			})
 			.error(function () {
 				console.log("elephantFactory getElephants: FAILURE");
@@ -27,8 +27,8 @@ app.factory('elephantFactory', ['$http', function($http) {
   elephantFactory.deleteElephant = function (id) {
     return $http.delete(urlBase + '/' + id)
 			.success(function (data) {
-        console.log("elephantFactory deleteElephant: SUCCESS");
 				elephantFactory.elephants.splice(id, 1);
+        console.log("elephantFactory deleteElephant: SUCCESS");
 			})
 			.error(function () {
         console.log("elephantFactory deleteElephant: FAILURE");
