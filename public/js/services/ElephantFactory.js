@@ -28,6 +28,12 @@ app.factory('elephantFactory', ['$http', function($http) {
 
   elephantFactory.updateElephant = function (elephant) {
     return $http.put(urlBase + '/' + elephant.id, elephant)
+		  .success(function () {
+        console.log("elephantFactory updateElephant: SUCCESS");
+      })
+      .error(function () {
+        console.log("elephantFactory updateElephant: FAILURE");
+      });
   };
 
   elephantFactory.deleteElephant = function (id) {

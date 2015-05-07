@@ -44,11 +44,8 @@ app.controller('elephantsEditController', ['$scope', '$routeParams', 'elephantFa
 		$scope.elephant = $scope.elephants[$routeParams.id];
 		$scope.save = function() {
 			elephantFactory.updateElephant($scope.elephant)
-				.success(function () {
+        .then(function () {
 					$location.path("/");
-				})
-				.error(function (error) {
-					$scope.status = 'Unable to update elephant: ' + error.message;
 				});
 		}
 
