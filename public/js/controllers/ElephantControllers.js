@@ -1,7 +1,6 @@
 app.controller('elephantsListController', ['$scope', 'elephantFactory', '$window',
   function ($scope, elephantFactory, $window) {
 
-  $scope.status;
   $scope.elephants = elephantFactory.elephants;
   getElephants();
 
@@ -10,6 +9,8 @@ app.controller('elephantsListController', ['$scope', 'elephantFactory', '$window
 			.getElephants()
 			.then(function () {
 				$scope.elephants = elephantFactory.elephants;
+console.log(elephantFactory.elephants);
+console.log($scope.elephants);
 			});
   }
 
@@ -19,7 +20,7 @@ app.controller('elephantsListController', ['$scope', 'elephantFactory', '$window
     };
     var index = $scope.elephants.indexOf(elephant);
     $scope.elephants.splice(index, 1);
-    }
+  }
 
 }]);
 

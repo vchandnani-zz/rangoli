@@ -21,7 +21,8 @@ module.exports = function(config) {
       'public/js/app.js',
       'public/js/controllers/ElephantControllers.js',
       'public/js/services/ElephantFactory.js',
-      'public/test/spec/ElephantFactory.js'
+      'public/test/spec/ElephantFactory.js',
+      'public/test/spec/ElephantControllers.js'
     ],
 
 
