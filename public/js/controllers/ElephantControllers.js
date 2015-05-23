@@ -1,16 +1,13 @@
 app.controller('elephantsListController', ['$scope', 'elephantFactory', '$window',
   function ($scope, elephantFactory, $window) {
 
-  $scope.elephants = elephantFactory.elephants;
+  $scope.elephants = {};
   getElephants();
 
   function getElephants() {
-		elephantFactory
-			.getElephants()
-			.then(function () {
-				$scope.elephants = elephantFactory.elephants;
-console.log(elephantFactory.elephants);
-console.log($scope.elephants);
+		elephantFactory.getElephants()
+      .then(function(elephants) {
+				$scope.elephants = elephants.data;
 			});
   }
 

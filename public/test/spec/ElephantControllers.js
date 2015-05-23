@@ -3,14 +3,13 @@
 describe('controller: elephantsListController', function() {
 
   var scope, controller, mockFactory, deferred;
-  var elephants = [ { name: 'rangoli', rider: 'vinny', passengers: 'bobby' } ];
+  var elephants = { data: [ { name: 'rangoli', rider: 'vinny', passengers: 'bobby' } ] };
 
   beforeEach(module('elephantsApp'));
 
   beforeEach(inject(function($rootScope, $controller, $q, elephantFactory) {
     mockFactory = {
       getElephants: function() {
-				elephantFactory.elephants = elephants;
         deferred = $q.defer();
         return deferred.promise;
       }
@@ -27,11 +26,10 @@ describe('controller: elephantsListController', function() {
     expect(mockFactory.getElephants).toHaveBeenCalled();
   });
 
-	// Q: how to set elephantFactory.elephants?
-  xit('should set list of elephants', function() {
+  it('should set list of elephants', function() {
     deferred.resolve(elephants);
     scope.$digest();
-    expect(scope.elephants).toEqual(elephants);
+    expect(scope.elephants).toEqual(elephants.data);
   });
 
 });
