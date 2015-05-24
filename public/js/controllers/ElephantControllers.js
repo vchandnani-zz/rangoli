@@ -13,10 +13,12 @@ app.controller('elephantsListController', ['$scope', 'elephantFactory', '$window
 
   $scope.deleteElephant = function(elephant) {
     if (confirm("Are you sure?")) {
-      elephantFactory.deleteElephant(elephant.id);
+      elephantFactory.deleteElephant(elephant.id)
+				.then(function() {
+					var index = $scope.elephants.indexOf(elephant);
+					$scope.elephants.splice(index, 1);
+				});
     };
-    var index = $scope.elephants.indexOf(elephant);
-    $scope.elephants.splice(index, 1);
   }
 
 }]);
