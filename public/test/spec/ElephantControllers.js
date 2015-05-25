@@ -37,7 +37,6 @@ describe('elephantsListController: getElephants', function() {
 describe('elephantsAddController: addElephant', function() {
 
   var scope, controller, mockFactory, deferred, mockWindow;
-  var elephants = { data: [ { name: 'rangoli', rider: 'vinny', passengers: 'bobby' } ] };
 
   beforeEach(module('elephantsApp'));
 
@@ -69,7 +68,39 @@ describe('elephantsAddController: addElephant', function() {
 
   it('should set window location', function() {
 		scope.save();
+		deferred.resolve({});
 		expect(mockWindow.location.href).toEqual("/");
+  });
+
+});
+
+describe('elephantsEditController: updateElephant', function() {
+
+  var scope, routeParams, controller, mockFactory, deferred;
+  beforeEach(module('elephantsApp'));
+
+  beforeEach(inject(function($rootScope, $routeParams, $controller, $q, elephantFactory) {
+    mockFactory = {
+      updateElephant: function() {
+        deferred = $q.defer();
+        return deferred.promise;
+      }
+    };
+    spyOn(mockFactory, 'updateElephant').and.callThrough();
+    scope = $rootScope.$new();
+    scope.elephants = [];
+		scope.elephants[1] = {};
+		routeParams = { id: "1" };
+    controller = $controller('elephantsEditController', {
+      $scope: scope,
+			$routeParams: routeParams,
+      elephantFactory: mockFactory
+    });
+  }));
+
+  it('should call updateElephant', function() {
+		scope.save();
+    expect(mockFactory.updateElephant).toHaveBeenCalled();
   });
 
 });

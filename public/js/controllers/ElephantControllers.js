@@ -38,7 +38,7 @@ app.controller('elephantsAddController', ['$scope', 'elephantFactory', '$window'
 }]);
 
 app.controller('elephantsEditController', ['$scope', '$routeParams', 'elephantFactory', '$location',
-  function elephantsEditController($scope, $routeParams, elephantFactory, $location) {
+  function ($scope, $routeParams, elephantFactory, $location) {
 
 		$scope.title = "Edit Elephant";
 		$scope.elephant = $scope.elephants[$routeParams.id];
