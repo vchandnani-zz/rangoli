@@ -1,8 +1,17 @@
 app.controller('elephantsListController', ['$scope', 'elephantFactory', '$window',
   function ($scope, elephantFactory, $window) {
 
-  $scope.elephants = {};
-  getElephants();
+  $scope.elephants = [];
+	var index = 0;
+
+	function indexOfObject(arr, obj) {
+		for(var i = 0; i < arr.length; i++){
+			if(angular.equals(arr[i], obj)){
+				return i;
+			}
+		};
+		return -1;
+	}
 
   function getElephants() {
 		elephantFactory.getElephants()
@@ -15,11 +24,13 @@ app.controller('elephantsListController', ['$scope', 'elephantFactory', '$window
     if (confirm("Are you sure?")) {
       elephantFactory.deleteElephant(elephant.id)
 				.then(function() {
-					var index = $scope.elephants.indexOf(elephant);
+					index = indexOfObject($scope.elephants, elephant);
 					$scope.elephants.splice(index, 1);
 				});
     };
   }
+
+  getElephants();
 
 }]);
 

@@ -3,8 +3,6 @@ app.factory('elephantFactory', ['$http', function($http) {
   var urlBase = '/elephants';
   var elephantFactory = {};
 
-  elephantFactory.elephants = [];
-
   elephantFactory.getElephants = function () {
     return $http.get(urlBase);
   };
