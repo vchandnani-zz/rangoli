@@ -34,23 +34,23 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      // 'public/js/app.js': ['coverage'],
-      // 'public/js/controllers/ElephantControllers.js': ['coverage'],
-			// 'public/js/services/ElephantFactory.js': ['coverage']
+      'public/js/app.js': ['coverage'],
+      'public/js/controllers/ElephantControllers.js': ['coverage'],
+			'public/js/services/ElephantFactory.js': ['coverage']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-		// reporters: ['progress', 'coverage'],
+		reporters: ['progress', 'coverage'],
 
 
     // configure the coverage reporter
-    // coverageReporter: {
-      // type : 'html',
-      // dir : 'public/test/coverage/'
-    // },
+    coverageReporter: {
+      type : 'html',
+      dir : 'public/test/coverage/'
+    },
 
     // web server port
     port: 9876,
