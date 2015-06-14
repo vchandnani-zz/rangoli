@@ -19,8 +19,8 @@
       <td>{{elephant.rider}}</td>
       <td>{{elephant.passengers}}</td>
       <td>
-        <a href="#/edit/{{$index}}" class="btn btn-primary">Edit</a>
-        <a ng-click="deleteElephant(elephant)" class="btn btn-danger">Delete</a>
+        <a href="#/edit/{{$index}}" class="btn btn-primary" id="update-button">Edit</a>
+        <a ng-click="deleteElephant(elephant)" class="btn btn-danger" id="delete-button">Delete</a>
       </td>
     </tr>
   </tbody>
