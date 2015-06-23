@@ -52,12 +52,19 @@ app.controller('elephantsEditController', ['$scope', '$routeParams', 'elephantFa
   function ($scope, $routeParams, elephantFactory, $location) {
 
 		$scope.title = "Edit Elephant";
+		$scope.elephant_copy = angular.copy($scope.elephants[$routeParams.id]);
 		$scope.elephant = $scope.elephants[$routeParams.id];
+
 		$scope.save = function() {
 			elephantFactory.updateElephant($scope.elephant)
         .then(function () {
 					$location.path("/");
 				});
+		}
+
+		$scope.cancel = function() {
+      $scope.elephants[$routeParams.id] = $scope.elephant_copy;
+			$location.path("/");
 		}
 
 }]);

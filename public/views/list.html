@@ -14,7 +14,8 @@
   </thead>
 
   <tbody>
-    <tr ng-repeat="elephant in elephants | orderBy: 'name' ">
+    <!-- tr ng-repeat="elephant in elephants | orderBy: 'name' " -->
+    <tr ng-repeat="elephant in elephants">
       <td>{{elephant.name}}</td>
       <td>{{elephant.rider}}</td>
       <td>{{elephant.passengers}}</td>
