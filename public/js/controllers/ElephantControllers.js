@@ -46,6 +46,10 @@ app.controller('elephantsAddController', ['$scope', 'elephantFactory', '$window'
 				});
 		}
 
+		$scope.cancel = function() {
+			$window.location.href = "/";
+		}
+
 }]);
 
 app.controller('elephantsEditController', ['$scope', '$routeParams', 'elephantFactory', '$location',
