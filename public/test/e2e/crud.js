@@ -85,6 +85,21 @@ describe('E2E tests: add elephants', function() {
     browser.waitForAngular();
 		var elephants = element.all(by.repeater('elephant in elephants'));
     expect(elephants.count()).toEqual(10);
+		var updated_name = "rangoli5";
+    var elephant_attributes = [];
+    element.all(by.repeater('elephant in elephants')).filter(function(row) {
+      return row.element(by.css('.ng-binding')).getText().then(function(name) {
+        return name === updated_name; 
+      });
+    })
+    .get(0)
+		.getText()
+		.then(function(text) {
+			elephant_attributes = text.split(" ");
+			expect(elephant_attributes[0]).toEqual('rangoli5');
+			expect(elephant_attributes[1]).toEqual('vinny55');
+			expect(elephant_attributes[2]).toEqual('bobby55');
+		});
 	});
 
 });
