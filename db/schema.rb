@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150212040639) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "elephants", force: :cascade do |t|
     t.text     "name"
     t.text     "rider"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20150212040639) do
     t.datetime "updated_at"
   end
 
-  add_index "elephants", ["name"], name: "index_elephants_on_name", unique: true
-  add_index "elephants", ["passengers"], name: "index_elephants_on_passengers"
-  add_index "elephants", ["rider"], name: "index_elephants_on_rider"
+  add_index "elephants", ["name"], name: "index_elephants_on_name", unique: true, using: :btree
+  add_index "elephants", ["passengers"], name: "index_elephants_on_passengers", using: :btree
+  add_index "elephants", ["rider"], name: "index_elephants_on_rider", using: :btree
 
 end

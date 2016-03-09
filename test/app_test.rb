@@ -65,7 +65,7 @@ class AppTest < Minitest::Test
   end
 
   def test_read_elephants_by_invalid_id
-    get "/elephants/bad_id"
+    get "/elephants/999"
 		assert_equal 403, last_response.status
 		results = JSON.parse(last_response.body)
 		assert_equal "not found.", results["error"]["elephant"][0]
@@ -91,7 +91,7 @@ class AppTest < Minitest::Test
 		e1 = { :name => "rangoli", :rider => "vinny", :passengers => "bobby" }
 		post '/elephants', e1.to_json
 		e2 = { :name => "rangoli2", :rider => "vinny2", :passengers => "bobby2" }
-		put '/elephants/bad_id', e2.to_json
+		put '/elephants/999', e2.to_json
 		assert_equal 403, last_response.status
 		results = JSON.parse(last_response.body)
 		assert_equal "not found.", results["error"]["elephant"][0]
@@ -112,7 +112,7 @@ class AppTest < Minitest::Test
 	end
 
 	def test_delete_elephants_by_invalid_id
-		delete '/elephants/bad_id'
+		delete '/elephants/999'
 		assert_equal 403, last_response.status
 		results = JSON.parse(last_response.body)
 		assert_equal "not found.", results["error"]["elephant"][0]
